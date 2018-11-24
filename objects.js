@@ -20,6 +20,14 @@ class User {
     }
 }
 
+class Admin extends User {
+    deleteUser(user) {
+        users = users.filter(u => {
+            return u.email != user.email
+        })
+    }
+}
+
 // new -> 1. Create Empty object {}
 // 2. sets this to point to the new empty object
 // call contructor method
@@ -27,6 +35,16 @@ var userOne = new User('ryu@ninjas.com', 'Ryu');
 
 var userTwo = new User('a@u.com', 'a');
 
+var admin = new Admin('ashwin@gmail.com', 'ashwin');
+
 userOne.login().updateScore().updateScore();
+
+var users = [userOne, userTwo, admin];
+
+admin.deleteUser(userOne);
+
+console.log(users);
+
+
 
 
