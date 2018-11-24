@@ -9,5 +9,16 @@ var userOne = {
     }
 };
 
+// Two ways to update properties
+var prop = 'name';
+
+userOne.name = "ashwin";
+//Dynamic properties
+console.log(userOne[prop]);
+userOne['email'] = "a@u.com";
+
+// Set properties on Object
+userOne.age = 25;
+
 userOne.login();
 userOne.logout();
