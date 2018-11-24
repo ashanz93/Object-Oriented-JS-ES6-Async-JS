@@ -1,24 +1,32 @@
-var userOne = {
-    email: 'ryu@ninjas.com',
-    name: 'Ryu',
-    login(){
-        console.log(this.email, 'has logged in');
-    },
-    logout(){
-        console.log(this.email, 'has logged out');
+// Move to class paradigm
+class User {
+    constructor(email, name){
+        this.email = email;
+        this.name = name;
+        this.score = 0;
     }
-};
+    login() {
+        console.log(this.email, 'logged in');
+        return this;
+    }
+    logout() {
+        console.log(this.email, 'logged out');
+        return this;
+    }
+    updateScore(){
+        this.score++;
+        console.log(this.email, 'Score now: ', this.score);
+        return this; // Facilitate method chaining
+    }
+}
 
-// Two ways to update properties
-var prop = 'name';
+// new -> 1. Create Empty object {}
+// 2. sets this to point to the new empty object
+// call contructor method
+var userOne = new User('ryu@ninjas.com', 'Ryu');
 
-userOne.name = "ashwin";
-//Dynamic properties
-console.log(userOne[prop]);
-userOne['email'] = "a@u.com";
+var userTwo = new User('a@u.com', 'a');
 
-// Set properties on Object
-userOne.age = 25;
+userOne.login().updateScore().updateScore();
 
-userOne.login();
-userOne.logout();
+
