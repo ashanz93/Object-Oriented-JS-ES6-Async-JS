@@ -37,15 +37,49 @@ function User(email, name) {
     this.email = email;
     this.name = name;
     this.online = false;
+}
 
-    this.login = function() {
-        console.log(this.email, 'has logged in');
-    }
+var user = User.prototype;
+
+user.login = function() {
+    this.online = true;
+    console.log(this.email, 'has logged in');
+}
+
+user.logout = CUser_logout;
+
+function CUser_logout() {
+    this.online = false;
+    console.log(this.email, 'has logged out');
+}
+
+// args is an array
+// this -> bound to admin
+// apply -> inherits User prototype properties and assigns passed args to properties of User prototype
+function Admin(...args) {
+    User.apply(this, args);
+    this.role = 'administrator';
+}
+
+Admin.prototype = Object.create(user);
+
+var admin = Admin.prototype;
+
+admin.deleteUser = CAdmin_deleteUser;
+
+function CAdmin_deleteUser(u) {
+    users = users.filter(user => {
+        return user.email != u.email
+    })
 }
 
 var userOne = new User('ryu@ninjas.com', 'Ryu');
 
 var userTwo = new User('a@u.com', 'a');
+
+var admin = new Admin('ashwin@gmail.com', 'ashwin');
+
+var users = [userOne, userTwo, admin];
 
 /*var admin = new Admin('ashwin@gmail.com', 'ashwin');
 
@@ -58,6 +92,12 @@ admin.deleteUser(userOne);
 console.log(users);*/
 
 userOne.login();
+
+userOne.logout();
+
+console.log(admin);
+
+admin.deleteUser(users[1]);
 
 
 
