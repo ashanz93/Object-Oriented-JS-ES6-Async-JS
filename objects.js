@@ -1,5 +1,5 @@
 // Move to class paradigm
-class User {
+/* class User {
     constructor(email, name){
         this.email = email;
         this.name = name;
@@ -26,16 +26,28 @@ class Admin extends User {
             return u.email != user.email
         })
     }
-}
+}*/
 
 // new -> 1. Create Empty object {}
 // 2. sets this to point to the new empty object
 // call contructor method
+
+// Prototype model (non ES6 syntax)
+function User(email, name) {
+    this.email = email;
+    this.name = name;
+    this.online = false;
+
+    this.login = function() {
+        console.log(this.email, 'has logged in');
+    }
+}
+
 var userOne = new User('ryu@ninjas.com', 'Ryu');
 
 var userTwo = new User('a@u.com', 'a');
 
-var admin = new Admin('ashwin@gmail.com', 'ashwin');
+/*var admin = new Admin('ashwin@gmail.com', 'ashwin');
 
 userOne.login().updateScore().updateScore();
 
@@ -43,7 +55,9 @@ var users = [userOne, userTwo, admin];
 
 admin.deleteUser(userOne);
 
-console.log(users);
+console.log(users);*/
+
+userOne.login();
 
 
 
