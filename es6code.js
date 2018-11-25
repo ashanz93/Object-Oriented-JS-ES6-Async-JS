@@ -82,4 +82,37 @@ window.onload = function(){
 
     console.log(ninja.name);
     ninja.chopES6(5);
+
+    var str = "graaaaaaaavy";
+
+    console.log(str.repeat(5));
+
+    var str2 = "goodbye";
+
+    console.log(str2.startsWith('good'));
+
+    console.log(str2.startsWith('bye', 4));
+
+    // Arrow functions
+    var arrowFunc = (name) => {
+        console.log(name);
+    }
+
+    arrowFunc(name);
+
+    var arrowObject = {
+        name: 'ashwin',
+        chop(x){
+            // var _this = this; ES5 way to change this context
+            // ES6 way of setting context of this to the principal object
+            window.setInterval(() => {
+                if(x > 0){
+                    console.log(this.name + " chopped the enemy"); //this points to the function. But if we use _this it will be pointing to the arrow object
+                    x--;
+                }
+            }, 1000)
+        }
+    }
+
+    arrowObject.chop(5);
 }
