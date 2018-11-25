@@ -114,5 +114,43 @@ window.onload = function(){
         }
     }
 
-    arrowObject.chop(5);
+    // arrowObject.chop(5);
+
+    var names = new Set();
+
+    names.add('abc').add('def');
+
+    console.log(names.size);
+
+    names.add('gfh').delete('def'); // Cannot chain multiple deletes
+
+    console.log(names.size);
+
+    console.log(names.has('def'));
+
+    var array1 = ['abc', 'abc', 'def', 'def', 'gfh', 'gfh'];
+
+    var uniqueSet = new Set(array1);
+
+    console.log(uniqueSet);
+
+    array1 = [...uniqueSet];
+
+    console.log(array1);
+
+    // Generators
+    function* gen(){
+        var x = yield 'abc'; // console.log then yield. yield pauses execution
+        var y = yield 'def';
+        var z = yield 'gfh';
+        return x + y + z;
+    }
+
+    var genIterator = gen();
+    console.log(genIterator.next());
+    console.log(genIterator.next(10));
+    console.log(genIterator.next(5));
+    console.log(genIterator.next(3));
+
+    
 }
