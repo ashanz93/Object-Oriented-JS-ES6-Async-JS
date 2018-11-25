@@ -33,4 +33,53 @@ window.onload = function(){
     }
 
     logNinja();
+
+    var meats = ['ham', 'chicken', 'pork'];
+
+    console.log(...meats); // ... spread operator
+
+    var nums1 = [1, 2, 3];
+
+    var nums2 = [...nums1, 4, 5, 6]; //Spread nums1 into individual elements
+
+    console.log(nums2);
+
+    function addNums(a, b, c)
+    {
+        console.log(a+b+c);
+    }
+
+    var nums = [3, 5, 7];
+
+    addNums(...nums);
+
+    var temp = `hello 
+    my name is ryu`; // Add line break without \n
+
+    console.log(temp);
+
+    function logInfo(name = 'Ashwin', age) {
+        console.log(`My name is ${name} and my age is ${10 + 15}`);
+    }
+    
+    logInfo();
+
+    // Object literal enhancements
+    // ES6 Implicitly grab name from variables
+
+    var name = "crystal"
+    var belt = "black"
+
+    var ninja = { name, belt, 
+        // ES5
+        chop: function(x){
+            console.log(`Chopped an enemy ${x} times`)
+        },
+        chopES6(x){
+            console.log(`Chopped an enemy ${x} times`)
+        }
+    };
+
+    console.log(ninja.name);
+    ninja.chopES6(5);
 }
