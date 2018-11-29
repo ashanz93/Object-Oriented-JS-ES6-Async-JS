@@ -6,7 +6,7 @@ function cbTweets(data)
 {
     $.ajax({
         type: "GET",
-        url: "data/friends.json",
+        url: "AsyncJS/data/friends.json",
         success: cbFriends,
         error: handleError
     })
@@ -16,7 +16,7 @@ function cbFriends(data)
 {
     $.ajax({
         type: "GET",
-        url: "data/places.json",
+        url: "AsyncJS/data/places.json",
         success: function(data){
             console.log(data);
         },
@@ -27,7 +27,7 @@ function cbFriends(data)
 window.onload = function() {
     $.ajax({
         type: "GET",
-        url: "data/tweets.json",
+        url: "AsyncJS/data/tweets.json",
         success: cbTweets,
         error: handleError
     })
