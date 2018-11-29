@@ -1,36 +1,34 @@
+function handleError(jqXHR, textStatus, error){
+    console.log(error);
+}
+
+function cbTweets(data)
+{
+    $.ajax({
+        type: "GET",
+        url: "data/friends.json",
+        success: cbFriends,
+        error: handleError
+    })
+}
+
+function cbFriends(data)
+{
+    $.ajax({
+        type: "GET",
+        url: "data/places.json",
+        success: function(data){
+            console.log(data);
+        },
+        error: handleError
+    })
+}
+
 window.onload = function() {
-    // callback hell demo
     $.ajax({
         type: "GET",
         url: "data/tweets.json",
-        success: function(data){
-            console.log(data);
-            $.ajax({
-                type: "GET",
-                url: "data/friends.json",
-                success: function(data){
-                    console.log(data);
-                    $.ajax({
-                        type: "GET",
-                        url: "data/places.json",
-                        success: function(data){
-                            console.log(data);
-                            
-                        },
-                        error: function(jqXHR, textStatus, error){
-                            console.log("error");
-                        }
-                    })
-                },
-                error: function(jqXHR, textStatus, error){
-                    console.log("error");
-                }
-            })
-        },
-        error: function(jqXHR, textStatus, error){
-            console.log("error");
-        }
+        success: cbTweets,
+        error: handleError
     })
-
-
 }
